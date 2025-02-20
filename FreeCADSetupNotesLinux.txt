@@ -1,0 +1,30 @@
+Linux Mint Install
+
+Install on new build:
+
+sudo add-apt-repository ppa:freecad-maintainers/freecad-stable
+sudo apt update
+sudo apt install freecad
+
+
+On Mint (Ubuntu) we need to create these links: rem ln -s source_file symbolic_link
+
+sudo ln -s /usr/lib/freecad/Mod /usr/lib/freecad-python3/Mod
+sudo ln -s /usr/lib/freecad/Ext /usr/lib/freecad-python3/Ext
+
+We need these links because when executing Application startup (import FreeCAD) from an external python interpreter,
+AppHomePath is resolved as /usr/lib/freecad-python3 (which is the location of FreeCAD.so).
+ (See Application.cpp & FreeCADInit.py in source)
+This results in FreeCAD.getHomePath as returning /usr/lib/freecad-python3 and setting the Mod dir as /usr/lib/freecad-python3/Mod.
+The correct location is /usr/lib/freecad/Mod, adding these links resolves this issue.
+
+Serial port issues:
+
+Cannot open /dev/ttyS0: Permission denied                                                      
+sudo usermod -a -G tty $USER
+sudo usermod -a -G dialout $USER
+may need to log out / back in
+
+or
+
+sudo chmod 666 /dev/ttyS0  (will be required at every login)

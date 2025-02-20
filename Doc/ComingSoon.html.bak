@@ -1,0 +1,37 @@
+<html>
+  <head>
+  <style>
+  ul.double {border-style: double;}
+  </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>CodeSharkFCs</title>
+  </head>
+  <body style="                  color: black; background-color: #999999;" vlink="#800080"
+
+    link="#0000FF" alink="#FF0000">
+    <p><font face="Arial, helvetica, sans-serif" size="8" color="#0000FF"><b>Coming
+          Soon - CodeSharkFCs</b></font></p>
+    <hr>
+    <p></p>
+    <font face="Arial, helvetica, sans-serif" size="5" color="#0000FF"> </font>
+    <ul class="double">
+      <font face="Arial, helvetica, sans-serif" size="5" color="#0000FF">
+        <li>What is it? </li>
+        <p><font face="Arial, helvetica, sans-serif" size="3" color="#000000">
+            CodeSharkFCs is an open source editor for your CNC programs and communication
+            software for your CNC controller </font></p>
+        <li>Where can I find the source? </li>
+		<p><font face="Arial, helvetica, sans-serif" size="3" color="#000000">
+		The source and additional information can be found <a href="https://github.com/nextjob/CodeSharkFCs/">Here</a></font></p>
+        <li>What else? </li>
+		<p><font face="Arial, helvetica, sans-serif" size="3" color="#000000">
+            CodeSharkFCs is a <a href="https://www.freecadweb.org/">FreeCAD</a> integration project. 
+			<p>The current version provides a mechanism to export design geometry (points, lines, arcs, circle center points) into the editor window </p>
+			 
+<img src="https://raw.githubusercontent.com/nextjob/CodeSharkFC/master/images/LineSelection.png" alt="Line Selection" style="width:800px;"> 
+
+        </font></p>
+      </font>
+    </ul>
+  </body>
+</html>
