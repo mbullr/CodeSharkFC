@@ -29,7 +29,7 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms
-  { you can add units after this }, srcmain, FindReplaceDialog, editoroptions,
+  { you can add units after this }, srcmain, FindReplaceDialog,
   RunTimeTypeInfoControls, Printer4Lazarus, FreeCad, SetFCparms, SetTool, About,
   EditColors, LazSerialPort, uReceive, uSend;
 
@@ -38,7 +38,6 @@ uses
 begin
   Application.Initialize;
   Application.CreateForm(TfrmMain, frmMain);
-  Application.CreateForm(TSynEditOptionsForm, SynEditOptionsForm);
   Application.CreateForm(TLazFindReplaceDialog, LazFindReplaceDialog);
   Application.CreateForm(TSetFCparmsFrm, SetFCparmsFrm);
   Application.CreateForm(TSetToolFRM, SetToolFRM);

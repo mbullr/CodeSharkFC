@@ -68,7 +68,7 @@ uses
   ComCtrls, SynEdit, SynHighlighterAny, StdCtrls, Buttons, ExtCtrls,
   SynEditTypes, FindReplaceDialog,
   //LazLogger,
-  SourcePrinter, eventlog, editoroptions, LazUTF8, FreeCad, ugcodehl, Process, LazSerial;
+  SourcePrinter, eventlog, LazUTF8, FreeCad, ugcodehl, Process, LazSerial;
 
 type
 
@@ -85,6 +85,7 @@ type
 
   TfrmMain = class(TForm)
     AutoCompleteBox: TComboBox;
+    FontDialog1: TFontDialog;
     ImageList1: TImageList;
     Logger: TEventLog;
     MenuItem1: TMenuItem;
@@ -199,7 +200,7 @@ type
     procedure mnuOpenClick(Sender: TObject);
     procedure mnuRedoClick(Sender: TObject);
     procedure mnuRereadClick(Sender: TObject);
-    procedure mnyEditorSettingsClick(Sender: TObject);
+    procedure FontSettingsClick(Sender: TObject);
     procedure mnuDeleteSelectionClick(Sender: TObject);
     procedure mnuPasteClick(Sender: TObject);
     procedure mnuToolbarClick(Sender: TObject);
@@ -312,12 +313,13 @@ end;
 
 procedure TfrmMain.SetEditorOptions;
 begin
-  SynEdit.Options := SynEditOptionsForm.Options;
-  SynEdit.Options2 := SynEditOptionsForm.Options2;
-  SynEdit.MaxUndo := SynEditOptionsForm.UndoLimit;
-  SynEdit.BlockIndent := SynEditOptionsForm.BlockIndent;
-  SynEdit.TabWidth := SynEditOptionsForm.TabWidth;
-  SynEdit.RightEdge := SynEditOptionsForm.RightMargin;
+ //   EditorOpts.SynEditOptions ?? see sourceeditor.pp
+//  SynEdit.Options := SynEditOptionsForm.Options;
+//  SynEdit.Options2 := SynEditOptionsForm.Options2;
+//  SynEdit.MaxUndo := SynEditOptionsForm.UndoLimit;
+//  SynEdit.BlockIndent := SynEditOptionsForm.BlockIndent;
+//  SynEdit.TabWidth := SynEditOptionsForm.TabWidth;
+//  SynEdit.RightEdge := SynEditOptionsForm.RightMargin;
 end;
 
 procedure TfrmMain.AddLastModify;
@@ -383,15 +385,18 @@ begin
   end;
 end;
 
-procedure TfrmMain.mnyEditorSettingsClick(Sender: TObject);
+procedure TfrmMain.FontSettingsClick(Sender: TObject);
 begin
-  SynEditOptionsForm.ShowModal;
-  if SynEditOptionsForm.ModalResult = mrOk then
+  if fontdialog1.Execute then
   begin
-    SetEditorOptions;
+   // set the font properties memo1.Font:=fontdialog1.Font;
   end;
+ // SynEditOptionsForm.ShowModal;
+ // if SynEditOptionsForm.ModalResult = mrOk then
+ // begin
+ //   SetEditorOptions;
+ // end;
 end;
-
 
 procedure TfrmMain.mnuDeleteSelectionClick(Sender: TObject);
 begin

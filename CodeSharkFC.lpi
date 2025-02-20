@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <PathDelim Value="\"/>
     <General>
       <Flags>
         <LRSInOutputDirectory Value="False"/>
+        <CompatibilityMode Value="True"/>
       </Flags>
-      <MainUnit Value="0"/>
       <Title Value="CodeSharkFC"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
@@ -116,13 +116,13 @@
     </PublishOptions>
     <RunParams>
       <local>
-        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+        <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
       </local>
       <FormatVersion Value="2"/>
       <Modes Count="1">
         <Mode0 Name="default">
           <local>
-            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T 'Lazarus Run Output' -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
+            <LaunchingApplication PathPlusParams="\usr\X11R6\bin\xterm -T &apos;Lazarus Run Output&apos; -e $(LazarusDir)\tools\runwait.sh $(TargetCmdLine)"/>
           </local>
         </Mode0>
       </Modes>
@@ -154,14 +154,14 @@
         <MinVersion Minor="5" Valid="True"/>
       </Item7>
     </RequiredPackages>
-    <Units Count="37">
+    <Units Count="39">
       <Unit0>
         <Filename Value="CodeSharkFC.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="14"/>
         <CursorPos Y="50"/>
-        <UsageCount Value="195"/>
+        <UsageCount Value="197"/>
       </Unit0>
       <Unit1>
         <Filename Value="srcmain.pas"/>
@@ -170,9 +170,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="584"/>
-        <CursorPos X="80" Y="598"/>
-        <UsageCount Value="195"/>
+        <TopLine Value="380"/>
+        <CursorPos Y="401"/>
+        <UsageCount Value="197"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -192,17 +192,16 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="38"/>
         <CursorPos X="86" Y="58"/>
-        <UsageCount Value="137"/>
+        <UsageCount Value="139"/>
       </Unit3>
       <Unit4>
         <Filename Value="editoroptions.pas"/>
-        <IsPartOfProject Value="True"/>
         <ComponentName Value="SynEditOptionsForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Myeditoroptions"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="48"/>
-        <CursorPos X="15" Y="80"/>
+        <CursorPos X="117" Y="9"/>
         <UsageCount Value="152"/>
       </Unit4>
       <Unit5>
@@ -257,11 +256,10 @@
         <ComponentName Value="SetFCparmsFrm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
-        <TopLine Value="153"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="42"/>
         <CursorPos X="85" Y="171"/>
-        <UsageCount Value="71"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="73"/>
       </Unit13>
       <Unit14>
         <Filename Value="FreeCad.pas"/>
@@ -269,10 +267,11 @@
         <ComponentName Value="FreeCadFrm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="-1"/>
-        <TopLine Value="1038"/>
-        <CursorPos X="40" Y="1031"/>
-        <UsageCount Value="78"/>
+        <EditorIndex Value="1"/>
+        <CursorPos X="71" Y="1118"/>
+        <UsageCount Value="80"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit14>
       <Unit15>
         <Filename Value="C:\lazarus64\components\python4delphi\PythonForDelphi\Components\Sources\Core\PythonEngine.pas"/>
@@ -290,7 +289,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="84"/>
         <CursorPos X="2" Y="3"/>
-        <UsageCount Value="60"/>
+        <UsageCount Value="62"/>
       </Unit16>
       <Unit17>
         <Filename Value="about.pas"/>
@@ -301,7 +300,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="24"/>
         <CursorPos X="72" Y="29"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="124"/>
       </Unit17>
       <Unit18>
         <Filename Value="C:\lazarus\components\python4delphi\PythonForDelphi\Components\Sources\Core\PythonEngine.pas"/>
@@ -400,7 +399,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="258"/>
         <CursorPos X="59" Y="285"/>
-        <UsageCount Value="48"/>
+        <UsageCount Value="50"/>
       </Unit31>
       <Unit32>
         <Filename Value="EditColors.pas"/>
@@ -410,7 +409,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="-1"/>
         <CursorPos X="21" Y="6"/>
-        <UsageCount Value="43"/>
+        <UsageCount Value="45"/>
       </Unit32>
       <Unit33>
         <Filename Value="ureceive.pas"/>
@@ -422,7 +421,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="43"/>
         <CursorPos X="131" Y="64"/>
-        <UsageCount Value="40"/>
+        <UsageCount Value="42"/>
       </Unit33>
       <Unit34>
         <Filename Value="usend.pas"/>
@@ -434,7 +433,7 @@
         <EditorIndex Value="-1"/>
         <TopLine Value="68"/>
         <CursorPos X="58" Y="94"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="40"/>
       </Unit34>
       <Unit35>
         <Filename Value="C:\lazarus\lcl\dialogs.pp"/>
@@ -446,133 +445,148 @@
       </Unit35>
       <Unit36>
         <Filename Value="C:\lazarus\fpc\3.2.0\source\packages\fcl-process\src\process.pp"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="-1"/>
         <TopLine Value="28"/>
         <CursorPos X="3" Y="43"/>
         <UsageCount Value="10"/>
-        <Loaded Value="True"/>
       </Unit36>
+      <Unit37>
+        <Filename Value="editoroptions.lfm"/>
+        <HasResources Value="True"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="myeditoroptions.pas"/>
+        <ComponentName Value="SynEditOptionsForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <CursorPos X="57" Y="9"/>
+        <UsageCount Value="20"/>
+        <Loaded Value="True"/>
+      </Unit38>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="606" Column="38" TopLine="578"/>
+        <Caret Line="850" Column="32" TopLine="840"/>
       </Position1>
       <Position2>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="605" Column="38" TopLine="577"/>
+        <Caret Line="173" Column="27" TopLine="167"/>
       </Position2>
       <Position3>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="235" Column="44" TopLine="223"/>
+        <Caret Line="590" Column="17" TopLine="575"/>
       </Position3>
       <Position4>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="227" TopLine="213"/>
+        <Caret Line="89" Column="19" TopLine="79"/>
       </Position4>
       <Position5>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="555" Column="3" TopLine="550"/>
+        <Caret Line="182" Column="29" TopLine="166"/>
       </Position5>
       <Position6>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="59" Column="93" TopLine="49"/>
+        <Caret Line="590" Column="17" TopLine="574"/>
       </Position6>
       <Position7>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="633" Column="3" TopLine="627"/>
+        <Caret Line="600" Column="96" TopLine="586"/>
       </Position7>
       <Position8>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="230" Column="16" TopLine="218"/>
+        <Caret Line="235" Column="74" TopLine="230"/>
       </Position8>
       <Position9>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="236" Column="44" TopLine="226"/>
+        <Caret Line="537" Column="145" TopLine="528"/>
       </Position9>
       <Position10>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="686" Column="23" TopLine="667"/>
+        <Caret Line="71" Column="30" TopLine="54"/>
       </Position10>
       <Position11>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="749" TopLine="717"/>
+        <Caret Line="65" Column="80" TopLine="52"/>
       </Position11>
       <Position12>
-        <Filename Value="srcmain.pas"/>
-        <Caret Line="682" Column="2" TopLine="666"/>
+        <Filename Value="myeditoroptions.pas"/>
+        <Caret Line="13" Column="71"/>
       </Position12>
       <Position13>
-        <Filename Value="srcmain.pas"/>
-        <Caret Line="680" Column="13" TopLine="678"/>
+        <Filename Value="myeditoroptions.pas"/>
+        <Caret Line="100" Column="94"/>
       </Position13>
       <Position14>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="221" Column="15" TopLine="208"/>
+        <Caret Line="71" Column="27" TopLine="55"/>
       </Position14>
       <Position15>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="713" Column="86" TopLine="698"/>
+        <Caret Line="315" Column="55" TopLine="303"/>
       </Position15>
       <Position16>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="219" Column="3" TopLine="212"/>
+        <Caret Line="393" Column="4" TopLine="377"/>
       </Position16>
       <Position17>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="27" Column="103"/>
+        <Caret Line="382" Column="34" TopLine="378"/>
       </Position17>
       <Position18>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="20" Column="75"/>
+        <Caret Line="383" Column="34" TopLine="379"/>
       </Position18>
       <Position19>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="621" Column="6" TopLine="617"/>
+        <Caret Line="403" Column="105" TopLine="381"/>
       </Position19>
       <Position20>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="623" Column="6" TopLine="619"/>
+        <Caret Line="902" Column="3" TopLine="900"/>
       </Position20>
       <Position21>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="852" TopLine="839"/>
+        <Caret Line="400" Column="128" TopLine="388"/>
       </Position21>
       <Position22>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="71" Column="79" TopLine="61"/>
+        <Caret Line="390" Column="12" TopLine="378"/>
       </Position22>
       <Position23>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="850" Column="32" TopLine="840"/>
+        <Caret Line="597" Column="15" TopLine="560"/>
       </Position23>
       <Position24>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="173" Column="27" TopLine="167"/>
+        <Caret Line="903" Column="12" TopLine="869"/>
       </Position24>
       <Position25>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="590" Column="17" TopLine="575"/>
+        <Caret Line="904" Column="15" TopLine="870"/>
       </Position25>
       <Position26>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="89" Column="19" TopLine="79"/>
+        <Caret Line="907" Column="17" TopLine="873"/>
       </Position26>
       <Position27>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="182" Column="29" TopLine="166"/>
+        <Caret Line="8" Column="106"/>
       </Position27>
       <Position28>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="590" Column="17" TopLine="574"/>
+        <Caret Line="390" Column="12" TopLine="356"/>
       </Position28>
       <Position29>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="600" Column="96" TopLine="586"/>
+        <Caret Line="392" Column="31" TopLine="368"/>
       </Position29>
       <Position30>
         <Filename Value="srcmain.pas"/>
-        <Caret Line="235" Column="74" TopLine="230"/>
+        <Caret Line="390" Column="3" TopLine="368"/>
       </Position30>
     </JumpHistory>
   </ProjectOptions>
@@ -592,6 +606,7 @@
     </CodeGeneration>
     <Linking>
       <Debugging>
+        <DebugInfoType Value="dsDwarf3"/>
         <UseExternalDbgSyms Value="True"/>
       </Debugging>
       <Options>
