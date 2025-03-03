@@ -980,6 +980,9 @@ begin
   end
   else
   begin
+    // Found a note that we must now have the current working dir set to where we
+    // will find the dll??
+    ChDir(PythonEngine1.DllPath);
     PythonEngine1.LoadDll;
     MaskFPUExceptions(True);
   end;
@@ -1064,7 +1067,8 @@ begin
       '\\lib\\site-packages\\PySide2'')');
     PyPath := EnsurePathHasDoubleSlashes(SetFCparmsFrm.FreeCadMod.Text);
     ScriptLns.Add('sys.path.append(''' + PyPath + '\\Part'')');
-    ScriptLns.Add('sys.path.append(''' + PyPath + '\\Drawing'')');
+        ScriptLns.Add('sys.path.append(''' + PyPath + '\\CAM'')');
+    ScriptLns.Add('sys.path.append(''' + PyPath + '\\Draft'')');
     PyPath := EnsurePathHasDoubleSlashes(ExtractFileDir(ParamStr(0)));
     ScriptLns.Add('sys.path.append(''' + PyPath + ''')');
 {$ENDIF}

@@ -9,7 +9,7 @@ Revision History
        note: The Gcode Temlate file (CSFCgTemplates.xml) and any python scripts executed by a G Code Template are
              expected to be in: Windows - C:\Users\<username>\AppData\Local\CodeSharkFC
                                 Linux - /home/<username>/.config/CodeSharkFC
-
+0.03b - Fixes to compile with Lazarus 3.8 and work to with FreeCAD 1.0 (mods to PathKurveUtils.py)
 
 For Reference, CodeSharkFCs rev history:
 

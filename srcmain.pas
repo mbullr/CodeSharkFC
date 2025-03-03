@@ -66,7 +66,7 @@ uses
   Classes, SysUtils, lazfileutils, FileUtil, LResources, Forms, Controls,
   Graphics, Dialogs, Menus,DOM, XMLRead,
   ComCtrls, SynEdit, SynHighlighterAny, StdCtrls, Buttons, ExtCtrls,
-  SynEditTypes, FindReplaceDialog,
+  SynEditTypes, FindReplaceDialog,inifiles,
   //LazLogger,
   SourcePrinter, eventlog, LazUTF8, FreeCad, ugcodehl, Process, LazSerial;
 
@@ -229,7 +229,8 @@ type
     FileName: string;
     List: TStringList;
     FSynGCodeHl: TGCodeHl;
-    procedure SetEditorOptions;
+    procedure ReadFontIniFile;
+    procedure SaveFontIniFile;
     procedure SetHLcolors;
     procedure AddLastModify;
     procedure RunProcess(ProcessExe :String; ProcessOpts : TProcessOptions);
@@ -240,7 +241,7 @@ type
 
 const
   MyAppName = 'CodeSharkFC';
-  CurVersion = '0.02b';
+  CurVersion = '0.03b';
   GTemplates =  PathDelim + 'CSFCgTemplates.xml';  //   -G Code template xml file
   //  custom script files found in AppData (C:\Users\**username**\AppData\Local\CodeSharkFC)
   StartupScript = 'StartupScript.py';
@@ -256,7 +257,7 @@ var
   // flags set in SetFCparms, read from CodeSharkFC.ini
   LicenseRead: boolean;      // if set do not show about screen on startup
   LicenseShown: boolean;    // have we shown the license (about) at startup?
-
+  ini: TIniFile;
 
 implementation
 
@@ -310,16 +311,49 @@ end;
 
 { TfrmMain }
 
-
-procedure TfrmMain.SetEditorOptions;
+procedure TfrmMain.ReadFontIniFile;
 begin
- //   EditorOpts.SynEditOptions ?? see sourceeditor.pp
-//  SynEdit.Options := SynEditOptionsForm.Options;
-//  SynEdit.Options2 := SynEditOptionsForm.Options2;
-//  SynEdit.MaxUndo := SynEditOptionsForm.UndoLimit;
-//  SynEdit.BlockIndent := SynEditOptionsForm.BlockIndent;
-//  SynEdit.TabWidth := SynEditOptionsForm.TabWidth;
-//  SynEdit.RightEdge := SynEditOptionsForm.RightMargin;
+  with TIniFile.Create(FrmMain.AppDataPath + PathDelim + MyAppName + 'Font.ini') do
+  begin
+
+   // font
+    frmMain.SynEdit.Font.Name :=  ReadString('Font Settings','Font',frmMain.SynEdit.Font.Name);
+    frmMain.SynEdit.Font.Size :=  ReadInteger('Font Settings','Size',frmMain.SynEdit.Font.Size);
+    frmMain.SynEdit.Font.Color :=  ReadInteger('Font Settings','Size',frmMain.SynEdit.Font.Color);
+    Free;
+  end;
+end;
+
+procedure TfrmMain.SaveFontIniFile;
+begin
+  with TIniFile.Create(FrmMain.AppDataPath + PathDelim + MyAppName + 'Font.ini') do
+  begin
+    try
+
+      // font
+      WriteString('Font Settings','Font',frmMain.SynEdit.Font.Name);
+      WriteInteger('Font Settings','Size',frmMain.SynEdit.Font.Size);
+      WriteInteger('Font Settings','Color',frmMain.SynEdit.Font.Color);
+    finally
+      Free;
+    end;
+  end;
+end;
+
+procedure TfrmMain.FontSettingsClick(Sender: TObject);
+begin
+  if fontdialog1.Execute then
+  begin
+   // set the font properties memo1.Font
+    frmMain.SynEdit.Font.Name :=  fontdialog1.Font.Name;
+    frmMain.SynEdit.Font.Size :=  fontdialog1.Font.Size;
+    frmMain.SynEdit.Font.Color :=  fontdialog1.Font.Color;
+  end;
+ // SynEditOptionsForm.ShowModal;
+ // if SynEditOptionsForm.ModalResult = mrOk then
+ // begin
+ //   SetEditorOptions;
+ // end;
 end;
 
 procedure TfrmMain.AddLastModify;
@@ -383,19 +417,6 @@ begin
       Logger.Error(E.ClassName + ' : ' + E.Message);
     end;
   end;
-end;
-
-procedure TfrmMain.FontSettingsClick(Sender: TObject);
-begin
-  if fontdialog1.Execute then
-  begin
-   // set the font properties memo1.Font:=fontdialog1.Font;
-  end;
- // SynEditOptionsForm.ShowModal;
- // if SynEditOptionsForm.ModalResult = mrOk then
- // begin
- //   SetEditorOptions;
- // end;
 end;
 
 procedure TfrmMain.mnuDeleteSelectionClick(Sender: TObject);
@@ -554,6 +575,7 @@ procedure TfrmMain.FormClose(Sender: TObject; var CloseAction: TCloseAction);
 var
   mr: integer;
 begin
+  SaveFontIniFile;
   if SynEdit.Modified then
   begin
     mr := MessageDlg('File ' + ExtractFileName(FileName) + ' was modified. Save?',
@@ -568,6 +590,7 @@ end;
 procedure TfrmMain.FormActivate(Sender: TObject);
 begin
   SetFCparmsFrm.LoadIni;
+
   if not (LicenseShown) then
     if not (LicenseRead) then
       AboutFrm.ShowModal;
@@ -583,7 +606,7 @@ begin
 
   end;
   Caption := ExtractFileName(FileName) + ' - CodeSharkFC';
-  SetEditorOptions;
+  ReadFontIniFile;
   //  set our version info
   AboutFrm.lblVer.Caption := CurVersion;
   // are we highlighting?

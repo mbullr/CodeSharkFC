@@ -1,7 +1,7 @@
 object frmMain: TfrmMain
-  Left = 2815
+  Left = 513
   Height = 726
-  Top = 403
+  Top = 225
   Width = 941
   HorzScrollBar.Page = 532
   VertScrollBar.Page = 311
@@ -2440,10 +2440,13 @@ object frmMain: TfrmMain
   end
   object FontDialog1: TFontDialog
     Font.CharSet = ANSI_CHARSET
-    Font.Pitch = fpVariable
+    Font.Height = -17
+    Font.Name = 'Courier New'
+    Font.Pitch = fpFixed
     Font.Quality = fqDraft
     MinFontSize = 0
     MaxFontSize = 0
+    Options = []
     Left = 408
     Top = 312
   end
