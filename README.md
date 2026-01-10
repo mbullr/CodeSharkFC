@@ -50,5 +50,5 @@ Solution: Installing python from python.org (current FreeCAD version Python 3.8.
 Error: `Error - no qt platform plugin could be initializeds`  
 
 Problem: Problem with QT6 looking for `..\platforms\` in the directory of the executable (in this case `CodeSharkFC.exe`).  
-Solution: You should be able to set environment variables to point to ..FreeCAD_x.x\lib\qt6\plugins\platforms but I have not had any luck with this.
+Solution: You should be able to set environment variable QT_PLUGIN_PATH to point to ..FreeCAD_x.x\lib\qt6\plugins\platforms but I have not had any luck with this.
 Workaround is to copy contents of `..FreeCAD_x.x\lib\qt6\plugins\platforms` to `..\CodeSharkFC\platforms` 
