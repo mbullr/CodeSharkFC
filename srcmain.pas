@@ -241,7 +241,7 @@ type
 
 const
   MyAppName = 'CodeSharkFC';
-  CurVersion = '0.03b';
+  CurVersion = '0.14b';
   GTemplates =  PathDelim + 'CSFCgTemplates.xml';  //   -G Code template xml file
   //  custom script files found in AppData (C:\Users\**username**\AppData\Local\CodeSharkFC)
   StartupScript = 'StartupScript.py';
@@ -1111,6 +1111,7 @@ begin
   end;
   frmReceive.edtTimeOut.Text := IntToStr(frmReceive.TimeoutCount);
   frmReceive.edtLnsRecd.Text := IntTOStr(frmReceive.RecvCount);
+  Application.ProcessMessages; // Keep GUI responsive added 1/10/26 not tested in send we do it every 100 lines sent?
 end;
 
 procedure TfrmMain.SynEditChange(Sender: TObject);

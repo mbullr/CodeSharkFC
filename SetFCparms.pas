@@ -68,6 +68,7 @@ type
     cbFreeCADWarnDisable: TCheckBox;
     cbPyVersions: TComboBox;
     Label2: TLabel;
+    FreeCadLib: TLabeledEdit;
     PyDllName: TEdit;
     Label1: TLabel;
     PythonHome: TLabeledEdit;
@@ -79,6 +80,7 @@ type
     procedure cbPyVersionsSelect(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FreeCadLibClick(Sender: TObject);
     procedure PythonHomeClick(Sender: TObject);
     procedure FreeCadModClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -110,15 +112,17 @@ Const
   WarningsSection = 'Warnings';
 
   {$IFDEF LINUX}
-  PythonHomeCaption = 'Python Interface Lib Path';
-  PythonHomeHint = 'Python Interface Lib Path (typically: /usr/lib/pythonX.Y/config-X.Y-x86_64-linux-gnu)';
-  FreeCADModLibCaption = 'FreeCAD Python Libraries';
-  FreeCADModLibHint = 'FreeCAD Python Libraries Path (typically: /usr/lib/freecad-python3/lib)';
+  PythonHomeCaption = 'Python Library (libpython3.xx.so) Path';
+  PythonHomeHint = 'Python Library Path (typically: /usr/lib/pythonX.Y/config-X.Y-x86_64-linux-gnu)';
+  FreeCADModLibCaption = 'FreeCAD Mod and Ext Path';
+  FreeCADModLibHint = 'FreeCAD Mod and Ext Path (if built from source, ../freecad-source/build)';
+  FreeCadLibHint =  'FreeCad Python Library, (typically /usr/lib/freecad-python3/lib, depending on build type)
   {$ELSE}
-  PythonHomeCaption = 'PythonHome Env Value';
-  PythonHomeHint = 'PythonHome Path (typically: ..\FreeCad\bin)';
+  PythonHomeCaption = 'Python Library (python3xx.dll) Path';
+  PythonHomeHint = 'Python Library Path (typically: ..\FreeCad\bin)';
   FreeCADModLibCaption = 'FreeCad Mod Path';
   FreeCADModLibHint = 'FreeCad Mod Directory (typically: ..\FreeCad\Mod)';
+  FreeCadLibHint = '';
   {$ENDIF}
 procedure TSetFCparmsFrm.FormClose(Sender: TObject; var Action: TCloseAction);
 Begin
@@ -134,10 +138,15 @@ begin
 // requirements for what we need to pass for path in python script
 // vary between Windows and Linux
 // Change dialog captions accordingly
-   FreeCadMod.EditLabel.Caption:= FreeCADModLibCaption;
-   PythonHome.EditLabel.Caption := PythonHomeCaption;
-end;
+  {$IFDEF LINUX}
+  FreeCadLib.Visible := True;
+  {$ELSE}
+  FreeCadLib.Visible := False;
+  {$ENDIF}
 
+  FreeCadMod.EditLabel.Caption:= FreeCADModLibCaption;
+  PythonHome.EditLabel.Caption := PythonHomeCaption;
+end;
 
 procedure TSetFCparmsFrm.cbPyVersionsSelect(Sender: TObject);
 begin
@@ -173,6 +182,9 @@ begin
     PyDllName.Text := Inif.ReadString(PathSection, 'PythonDllName', '');
     PyRegVersion := Inif.ReadString(PathSection, 'RegVersion', '');
     FreeCadMod.Text := Inif.ReadString(PathSection, 'FreeCadMod', '');
+    {$IFDEF LINUX}
+    FreeCadLib.Text := Inif.ReadString(PathSection, 'FreeCadLib', '');
+    {$ENDIF}
 
     cbCustStart.Checked := Inif.ReadBool(ScriptsSection,'Custom_Start_Script',cbCustStart.Checked);
     cbCustPanel.Checked := Inif.ReadBool(ScriptsSection,'Custom_View_Panel_Script', cbCustPanel.Checked);
@@ -224,6 +236,14 @@ begin
     else
       showMessage(FreeCADModLibCaption +' not found, ' + FreeCadMod.Text );
 
+    {$IFDEF LINUX}
+    if (Length(FreeCadLib.Text) > 0) and (DirectoryExists(FreeCadLib.Text))
+    then
+      Inif.WriteString(PathSection, 'FreeCadLib', FreeCadLib.Text)
+    else
+      showMessage('FreeCAD Python Library not found, ' + FreeCadLib.Text );
+    {$ENDIF}
+
     Inif.WriteBool(ScriptsSection, 'Custom_Start_Script', cbCustStart.Checked);
     Inif.WriteBool(ScriptsSection, 'Custom_View_Panel_Script',cbCustPanel.Checked);
     Inif.WriteBool(ScriptsSection, 'Custom_Selection_Observer_Script',cbCustSelectObs.Checked);
@@ -273,11 +293,29 @@ begin
 {$IFDEF WINDOWS}
     RDir := 'C:\';
 {$ELSE}
-        RDir := '\usr';
+    RDir := '\usr';
 {$ENDIF}
 
   if SelectDirectory(PythonHomeHint,RDir, ADir) then
     PythonHome.Text := ADir;
+end;
+
+procedure TSetFCparmsFrm.FreeCadLibClick(Sender: TObject);
+var
+  RDir: string;
+  ADir: string;
+begin
+  if Length(FreeCadLib.Text) <> 0 then
+    RDir := FreeCadLib.Text
+  else
+{$IFDEF WINDOWS}
+    RDir := 'C:\';
+{$ELSE}
+    RDir := '\usr';
+{$ENDIF}
+
+  if SelectDirectory(FreeCadLibHint,RDir, ADir) then
+    FreeCadLib.Text := ADir;
 end;
 
 end.

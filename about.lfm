@@ -1,18 +1,19 @@
 object AboutFrm: TAboutFrm
   Left = 2704
-  Height = 432
+  Height = 540
   Top = 350
-  Width = 503
+  Width = 629
   Caption = 'About'
-  ClientHeight = 432
-  ClientWidth = 503
+  ClientHeight = 540
+  ClientWidth = 629
+  DesignTimePPI = 120
   Position = poOwnerFormCenter
-  LCLVersion = '2.0.12.0'
+  LCLVersion = '4.4.0.0'
   object Memo1: TMemo
-    Left = 24
-    Height = 392
-    Top = 32
-    Width = 457
+    Left = 30
+    Height = 490
+    Top = 40
+    Width = 571
     Lines.Strings = (
       'This is free and unencumbered software released into the public domain.'
       ''
@@ -62,18 +63,18 @@ object AboutFrm: TAboutFrm
     WordWrap = False
   end
   object Label1: TLabel
-    Left = 24
-    Height = 15
-    Top = 8
-    Width = 119
+    Left = 30
+    Height = 20
+    Top = 10
+    Width = 148
     Caption = 'CodeShartkFC Version '
     ParentColor = False
   end
   object lblVer: TLabel
-    Left = 160
-    Height = 15
+    Left = 224
+    Height = 20
     Top = 8
-    Width = 21
+    Width = 27
     Caption = '0.00'
     ParentColor = False
   end

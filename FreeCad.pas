@@ -1059,6 +1059,13 @@ begin
 
 {$IFDEF LINUX}
     ScriptLns.Add('sys.path.append(''' + SetFCparmsFrm.FreeCadMod.Text + ''')');
+    PyPath := SetFCparmsFrm.FreeCadMod.Text;
+    ScriptLns.Add('sys.path.append(''' + PyPath + '/Mod/Part'')');
+    ScriptLns.Add('sys.path.append(''' + PyPath + '/Mod/CAM'')');
+    ScriptLns.Add('sys.path.append(''' + PyPath + '/Mod/Draft'')');
+    ScriptLns.Add('sys.path.append(''' + SetFCparmsFrm.FreeCadLib.Text + ''')');
+    PyPath := ExtractFileDir(ParamStr(0));
+    ScriptLns.Add('sys.path.append(''' + PyPath + ''')');
 {$ELSE}
     PyPath := EnsurePathHasDoubleSlashes(SetFCparmsFrm.PythonHome.Text);
     ScriptLns.Add('sys.path.append(''' + PyPath + ''')');
