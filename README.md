@@ -47,8 +47,8 @@ Error: `Error - could not load a Python engine`
 Problem: FreeCAD install does not ?always? load all the required Python files for `python4delphi` to the interface properly.  
 Solution: Installing python from python.org (current FreeCAD version Python 3.8.6) fixes this issue.
 
-Error: `Error - This application failed to start because it could not find or load the Qt platform plugin "windows"`  
+Error: `Error - no qt platform plugin could be initializeds`  
 
-Problem: Problem with QT5 looking for `..\platforms\` in the directory of the executable (in this case `CodeSharkFC.exe`).  
-Solution: You should be able to set environment variables to point to ..\FreeCAD19\bin\platforms but I have not had any luck with this.
-Workaround is to copy contents of `..\FreeCAD19\bin\platforms` to `..\CodeSharkFC\platforms` 
+Problem: Problem with QT6 looking for `..\platforms\` in the directory of the executable (in this case `CodeSharkFC.exe`).  
+Solution: You should be able to set environment variable QT_PLUGIN_PATH to point to ..FreeCAD_x.x\lib\qt6\plugins\platforms but I have not had any luck with this.
+Workaround is to copy contents of `..FreeCAD_x.x\lib\qt6\plugins\platforms` to `..\CodeSharkFC\platforms` 
